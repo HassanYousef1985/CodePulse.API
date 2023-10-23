@@ -82,7 +82,7 @@ namespace CodePulse.API.Controllers
             }
 
             var response = new CategoryDto
-            {
+            {   
                 Id = existingCategory.Id,
                 Name = existingCategory.Name,
                 UrlHandle = existingCategory.UrlHandle
