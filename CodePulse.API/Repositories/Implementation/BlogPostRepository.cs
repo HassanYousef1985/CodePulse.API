@@ -28,6 +28,7 @@ namespace CodePulse.API.Repositories.Implementation
             {
                dbContext.BlogPosts.Remove(existingBlogPost);
                await dbContext.SaveChangesAsync();
+                return existingBlogPost;
             }
             return null;
         }
