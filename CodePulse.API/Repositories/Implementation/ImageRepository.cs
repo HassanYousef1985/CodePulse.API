@@ -21,6 +21,12 @@ namespace CodePulse.API.Repositories.Implementation
             this.httpContextAccessor = httpContextAccessor;
             this.dbContext = dbContext;
         }
+
+        public async Task<IEnumerable<BlogImage>> GetAll()
+        {
+            return await dbContext.BlogImages.ToListAsync();
+        }
+
         public async Task<BlogImage> Upload(IFormFile file, BlogImage blogImage)
         {
             // 1- Upload the Image to API/Images
@@ -32,6 +38,7 @@ namespace CodePulse.API.Repositories.Implementation
             // https://codepulse.com/images/somefilename.jpg
             var httpRequest = httpContextAccessor.HttpContext.Request;
             var urlPath = $"{httpRequest.Scheme}://{httpRequest.Host}{httpRequest.PathBase}/Images/{blogImage.FileName}{blogImage.FileExtension}";
+
             blogImage.Url = urlPath;
 
             await dbContext.BlogImages.AddAsync(blogImage);
