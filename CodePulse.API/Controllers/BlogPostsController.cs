@@ -82,12 +82,15 @@ namespace CodePulse.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllBlogPosts()
         {
+            Console.Write("hassan");
+
             var blogPosts = await blogPostRepository.GetAllAsync();
 
             // Convert Domain model to DTO
             var response = new List<BlogPostDto>();
             foreach (var blogPost in blogPosts)
             {
+
                 response.Add(new BlogPostDto
                 {
                     Id = blogPost.Id,

@@ -35,6 +35,7 @@ namespace CodePulse.API.Repositories.Implementation
 
         public async Task<IEnumerable<BlogPost>> GetAllAsync()
         {
+            Console.WriteLine("test for connection");
             return await dbContext.BlogPosts.Include(x => x.Categories).ToListAsync();
         }
 
