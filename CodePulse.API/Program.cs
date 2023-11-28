@@ -76,6 +76,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseSwaggerUI(c =>
+{
+    string swaggerJsonBasePath = string.IsNullOrWhiteSpace(c.RoutePrefix) ? "." : "..";
+    c.SwaggerEndpoint($"{swaggerJsonBasePath}/swagger/v1/swagger.json", "BlogPosts");
+ 
+});
+
+
+
 app.UseHttpsRedirection();
 
 app.UseCors(options =>
